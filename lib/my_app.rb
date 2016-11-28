@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'json'
 
 class MyApp < Sinatra::Base
   set :port, 4000
@@ -11,6 +12,9 @@ class MyApp < Sinatra::Base
   get '/set' do
     @store = params
     params.each { |key, value| session[key] = value }
+    File.open("public/data.json", "a") do |f|
+      f.write(params.to_json)
+    end
     erb :set
   end
 
