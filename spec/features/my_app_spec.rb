@@ -12,4 +12,5 @@ feature "My App" do
     expect(page).to have_content "Banana"
     expect(page).not_to have_content "Fruit"
   end
+
 end
